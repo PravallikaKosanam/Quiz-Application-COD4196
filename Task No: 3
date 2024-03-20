@@ -1,0 +1,41 @@
+//Design a quiz that challenges users with multiple-choice questions from various categories. Store questions and answersin lists or dictionaries, track scores, and provide feedback on results.
+class PythonQuiz:
+    def __init__(self):
+        self.questions = {
+            "Basics": {
+                "What is the output of the following code snippet?\nprint(2 + 2 * 3)": ["A. 8", "B. 10", "C. 6", "D. 12"],
+                "What is the correct way to declare a variable in Python?": ["A. variable x", "B. x = 5", "C. x := 5", "D. x 5"],
+                "Which of the following is not a valid data type in Python?": ["A. String", "B. Dictionary", "C. Tuple", "D. Array"]
+            },
+            "Functions": {
+                "What keyword is used to define a function in Python?": ["A. define", "B. function", "C. def", "D. fun"],
+                "What does the 'return' statement do in a function?": ["A. Exits the function", "B. Returns a value from the function", "C. Defines a loop", "D. Prints a value"]
+            },
+            "Modules": {
+                "Which module in Python is used for regular expression?": ["A. regex", "B. re", "C. regexpy", "D. regexlib"],
+                "How do you import a module named 'example_module' in Python?": ["A. include example_module", "B. from example_module import *", "C. import example_module", "D. import * from example_module"]
+            }
+        }
+        self.score = 0
+
+    def start_quiz(self):
+        print("Welcome to the Python Quiz!")
+        for category, questions in self.questions.items():
+            print("\nCategory:", category)
+            for question, options in questions.items():
+                print("\n", question)
+                for option in options:
+                    print(option)
+                answer = input("Enter your answer (A/B/C/D): ").upper()
+                correct_answer = options[0]
+                if answer == correct_answer[0]:
+                    print("Correct!")
+                    self.score += 1
+                else:
+                    print("Incorrect! The correct answer is:", correct_answer)
+        print("\nQuiz Complete!")
+        print("Your Score:", self.score, "/", len(self.questions) * len(self.questions["Basics"]))
+
+if __name__ == "__main__":
+    quiz = PythonQuiz()
+    quiz.start_quiz()
